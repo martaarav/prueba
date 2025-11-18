@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding-top: 50px;
+}
+.galeria{
+    width: 90%;
+    margin: 0 auto;
+}
+.galeria a, .galeria img{
+    display: block;
+    width: 100%;
+}
+.galeria a:not(:first-child){
+    margin-top: 20px;
+}
+/* las siguientes lineas es para las pantallas de dispositivos más grandes que el movil
+Estos cambios en el código se llaman breakpoints*/
+@media screen and (min-width: 501px){
+    .galeria{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .galeria a{
+        width: 48%;
+        margin-bottom: 4%;
+    }
+    /*Para deshacer una regla super específica*/
+    .galeria a:not(:first-child){
+    margin-top: 0;
+    }
+}
+@media screen and (min-width: 901px){
+    /*El tipo de maquetación que hemos usado hasta ahora solo sirve para multiplos de 3 + 2, pero para este ancho y con maquetación de 3 columnas, cuando hay por ejemplo 8 imagnenes en la ultima fila con el space-between, no quedarían alineadas a la izquierda o la derecha, por lo que añadimos este tipo de justificación/alineación*/
+    .galeria{
+        justify-content: flex-start;
+    }
+    .galeria a{
+        width: 33%;
+        margin-bottom: 0.5%;
+    }
+    .galeria a:nth-child(3n+2){
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+    }
+}
+/* Para que no siga creando filas o creciendo en función del % del width*/
+@media screen and (min-width:1202px) {
+    .galeria{
+        width: 1200px;
+    }
+}
